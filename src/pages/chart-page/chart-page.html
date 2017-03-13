@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+  
+    <ion-title>
+      Your Macros
+    </ion-title>
+
+      <ion-buttons start>
+      <button ion-button icon-only (click)="editMacros()"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+ 
+<ion-content>
+ 
+    <!--<ion-card>
+      <ion-card-header>
+        Bar Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card>-->
+ <div *ngIf="isRestDay == false">
+    <ion-card>
+      <ion-card-header>
+        Macros Available
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvasTraining></canvas>
+      </ion-card-content>
+    </ion-card>
+ 
+    <!--<ion-card>
+      <ion-card-header>
+        Line Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+ -->
+
+ <ion-item>
+    <ion-label>Rest Day</ion-label>
+    <ion-toggle [(ngModel)]="isRestDay" disabled="false"></ion-toggle>
+  </ion-item>
+ </div>
+
+
+  <div *ngIf="isRestDay == true">
+    <ion-card>
+      <ion-card-header>
+        Macros Available
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvasResting></canvas>
+      </ion-card-content>
+    </ion-card>
+    <ion-item>
+     <ion-label>Training Day</ion-label>
+    <ion-toggle [(ngModel)]="isRestDay" checked="true" disabled="false"></ion-toggle>
+  </ion-item>
+  </div>
+
+</ion-content>

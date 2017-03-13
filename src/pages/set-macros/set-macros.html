@@ -1,0 +1,49 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-slides>
+  <ion-slide>
+    <h1>Set training macros:</h1>
+   <ion-item>
+<ion-label fixed>Protein</ion-label> <ion-input type="text" [(ngModel)]="trainingProtein"></ion-input>
+
+</ion-item> 
+ <ion-item>
+<ion-label fixed>Carbs</ion-label> <ion-input type="text" [(ngModel)]="trainingCarbs"></ion-input>
+
+</ion-item> 
+ <ion-item>
+<ion-label fixed>Fat</ion-label> <ion-input type="text" [(ngModel)]="trainingFat"></ion-input>
+
+</ion-item> 
+</ion-slide>
+
+ <ion-slide>
+    <h1>Set rest macros:</h1>
+   <ion-item>
+<ion-label fixed>Protein</ion-label> <ion-input type="text" [(ngModel)]="restProtein"></ion-input>
+
+</ion-item> 
+ <ion-item>
+<ion-label fixed>Carbs</ion-label> <ion-input type="text" [(ngModel)]="restCarbs"></ion-input>
+
+</ion-item> 
+ <ion-item>
+<ion-label fixed>Fat</ion-label> <ion-input type="text" [(ngModel)]="restFat"></ion-input>
+
+</ion-item> 
+<button ion-button icon-only (click)="goHome()" color ="light">
+                    <ion-icon name="md-checkmark"></ion-icon>
+                </button>
+
+</ion-slide>
+</ion-slides>
+</ion-content>
