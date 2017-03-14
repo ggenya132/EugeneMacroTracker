@@ -23,6 +23,7 @@
       </ion-card-content>
     </ion-card>-->
  <div [hidden]="!isRestDay">
+   <div class="animateInOpacity">
     <ion-card>
       <ion-card-header>
         Macros Available
@@ -42,14 +43,20 @@
     </ion-card>
  -->
 
+ 
+ 
+   </div>
+
  <ion-item>
-    <ion-label>Training Day</ion-label>
+      <ion-label>Training Day</ion-label>
     <ion-toggle [(ngModel)]="isRestDay" disabled="false"></ion-toggle>
   </ion-item>
+  
  </div>
 
 
   <div [hidden]="isRestDay">
+    <div class="animateInOpacity">
     <ion-card>
       <ion-card-header>
         Macros Available
@@ -58,7 +65,11 @@
         <canvas #doughnutCanvasResting></canvas>
       </ion-card-content>
     </ion-card>
-    <ion-item>
+     
+  
+    </div>
+
+      <ion-item>
      <ion-label>Rest Day</ion-label>
     <ion-toggle [(ngModel)]="isRestDay" checked="true" disabled="false"></ion-toggle>
   </ion-item>
