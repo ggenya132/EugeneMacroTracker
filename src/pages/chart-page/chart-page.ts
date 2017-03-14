@@ -1,13 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import {SetMacrosPage} from '../set-macros/set-macros';
- 
+import {Macros } from '../../providers/macros';
 @Component({
   selector: 'page-chart',
   templateUrl: 'chart-page.html'
 })
 export class ChartPage {
+  macros : any = Macros;
   isRestDay : boolean = true; 
   trainingProtein : number; 
   trainingCarbs : number;
@@ -29,46 +30,33 @@ export class ChartPage {
 
     lineChart: any;
  
-    constructor(public navCtrl: NavController, public params: NavParams) {
+    constructor(public navCtrl: NavController, public params: NavParams, public event: Events) {
  
 
-   this.trainingProtein = params.get("trainingProtein");
-    this.trainingCarbs = params.get("trainingCarbs");
-    this.trainingFat = params.get("trainingFat");
-    this.restProtein = params.get("restProtein");
-    this.restCarbs = params.get("restCarbs");
-    this.restFat = params.get ("restFat"); 
+    // this.trainingProtein = params.get("trainingProtein") 
+    // this.trainingCarbs = params.get("trainingCarbs")
+    // this.trainingFat = params.get("trainingFat") 
+    // this.restProtein = params.get("restProtein");
+    // this.restCarbs = params.get("restCarbs");
+    // this.restFat = params.get ("restFat"); 
 
 
 
     }
  
     ionViewDidLoad() {
+        this.event.subscribe("macros:logged", (data)=>{
 
-       console.log( this.trainingProtein);
-    console.log(this.trainingCarbs);
-    console.log(this.trainingFat);
-    console.log(this.restProtein);
-    console.log(this.restFat);
-    console.log(this.restCarbs);
- 
+            console.log(data);
 
-           
-    
-    }
- 
-
- ngAfterViewInit(){
-
-
- this.doughnutChartTraining = new Chart(this.doughnutCanvasTraining.nativeElement, {
+             this.doughnutChartTraining = new Chart(this.doughnutCanvasTraining.nativeElement, {
  
             type: 'doughnut',
             data: {
                 labels: ["Protein", "Fats", "Carbohydrates"],
                 datasets: [{
                     label: '# of Votes',
-                    data: [this.trainingProtein, this.trainingFat, this.trainingCarbs],
+                    data: [this.macros.trainingProtein, this.macros.trainingFat, this.macros.trainingCarbs],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -92,7 +80,71 @@ export class ChartPage {
                 labels: ["Protein", "Fats", "Carbohydrates"],
                 datasets: [{
                     label: '# of Votes',
-                    data: [this.restProtein, this.restFat, this.restCarbs],
+                    data: [this.macros.restProtein, this.macros.restFat, this.macros.restCarbs],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    
+                    ]
+                }]
+            }
+ 
+        });
+        });
+       console.log( this.macros.trainingProtein);
+    console.log(this.macros.trainingCarbs);
+    console.log(this.macros.trainingFat);
+    console.log(this.macros.restProtein);
+    console.log(this.macros.restFat);
+    console.log(this.macros.restCarbs);
+ 
+
+           
+    
+    }
+ 
+
+ ngAfterViewInit(){
+
+
+ this.doughnutChartTraining = new Chart(this.doughnutCanvasTraining.nativeElement, {
+ 
+            type: 'doughnut',
+            data: {
+                labels: ["Protein", "Fats", "Carbohydrates"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [this.macros.trainingProtein, this.macros.trainingFat, this.macros.trainingCarbs],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    
+                    ]
+                }]
+            }
+ 
+        });
+
+         this.doughnutChartResting = new Chart(this.doughnutCanvasResting.nativeElement, {
+ 
+            type: 'doughnut',
+            data: {
+                labels: ["Protein", "Fats", "Carbohydrates"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [this.macros.restProtein, this.macros.restFat, this.macros.restCarbs],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
