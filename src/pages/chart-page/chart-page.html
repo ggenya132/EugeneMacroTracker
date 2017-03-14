@@ -22,7 +22,7 @@
         <canvas #barCanvas></canvas>
       </ion-card-content>
     </ion-card>-->
- <div *ngIf="isRestDay == false">
+ <div [hidden]="!isRestDay">
     <ion-card>
       <ion-card-header>
         Macros Available
@@ -43,13 +43,13 @@
  -->
 
  <ion-item>
-    <ion-label>Rest Day</ion-label>
+    <ion-label>Training Day</ion-label>
     <ion-toggle [(ngModel)]="isRestDay" disabled="false"></ion-toggle>
   </ion-item>
  </div>
 
 
-  <div *ngIf="isRestDay == true">
+  <div [hidden]="isRestDay">
     <ion-card>
       <ion-card-header>
         Macros Available
@@ -59,7 +59,7 @@
       </ion-card-content>
     </ion-card>
     <ion-item>
-     <ion-label>Training Day</ion-label>
+     <ion-label>Rest Day</ion-label>
     <ion-toggle [(ngModel)]="isRestDay" checked="true" disabled="false"></ion-toggle>
   </ion-item>
   </div>

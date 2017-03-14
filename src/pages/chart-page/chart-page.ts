@@ -8,7 +8,7 @@ import {SetMacrosPage} from '../set-macros/set-macros';
   templateUrl: 'chart-page.html'
 })
 export class ChartPage {
-  isRestDay : boolean = false; 
+  isRestDay : boolean = true; 
   trainingProtein : number; 
   trainingCarbs : number;
   trainingFat : number;
@@ -85,29 +85,29 @@ export class ChartPage {
  
         });
 
-        //  this.doughnutChartResting = new Chart(this.doughnutCanvasResting.nativeElement, {
+         this.doughnutChartResting = new Chart(this.doughnutCanvasResting.nativeElement, {
  
-        //     type: 'doughnut',
-        //     data: {
-        //         labels: ["Protein", "Fats", "Carbohydrates"],
-        //         datasets: [{
-        //             label: '# of Votes',
-        //             data: [this.restProtein, this.restFat, this.restCarbs],
-        //             backgroundColor: [
-        //                 'rgba(255, 99, 132, 0.2)',
-        //                 'rgba(54, 162, 235, 0.2)',
-        //                 'rgba(255, 206, 86, 0.2)'
-        //             ],
-        //             hoverBackgroundColor: [
-        //                 "#FF6384",
-        //                 "#36A2EB",
-        //                 "#FFCE56"
+            type: 'doughnut',
+            data: {
+                labels: ["Protein", "Fats", "Carbohydrates"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [this.restProtein, this.restFat, this.restCarbs],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
                     
-        //             ]
-        //         }]
-        //     }
+                    ]
+                }]
+            }
  
-        // });
+        });
 
 
   // this.barChart = new Chart(this.barCanvas.nativeElement, {
