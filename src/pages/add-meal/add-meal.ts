@@ -197,4 +197,27 @@ export class AddMealPage {
     this.event.publish("macros:logged", data);
  }
 
+ presentConfirm(meal) {
+  let alert = this.alrtContrler.create({
+    title: 'Log this meal?',
+    message: 'Do you want to log ' + "'" + meal.title +"'" + "?" ,
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Log',
+        handler: () => {
+          this.logMeal(meal);
+        }
+      }
+    ]
+  });
+  alert.present();
+}
+
 }
