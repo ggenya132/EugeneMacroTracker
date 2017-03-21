@@ -18,12 +18,12 @@
 <div class="animate-in-primary">
   <div class="animate-in-secondary">
   <ion-list no-lines>
-    <ion-item-sliding *ngFor ="let meal of meals">
+    <ion-item-sliding *ngFor ="let meal of macroService.meals">
       <ion-item>
          <ion-avatar item-left>
         <img [src]="foodUrl">
       </ion-avatar>
-        {{meal.title}}, P: {{meal.Protein}}, C: {{meal.Carbohydrate}}, F: {{meal.Fat}}
+        {{meal.name}}, P: {{meal.protein}}, C: {{meal.carbs}}, F: {{meal.fats}}
       </ion-item>
       <ion-item-options>
           <button ion-button icon-only (click)="editMeal(meal)"  color="blue">

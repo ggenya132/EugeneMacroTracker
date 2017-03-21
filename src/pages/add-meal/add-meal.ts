@@ -32,7 +32,7 @@ export class AddMealPage {
   restCarbs : number;
   restFat : number;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public alrtContrler: AlertController, public modalCtrl: ModalController, public event : Events) {
+  constructor(public navCtrl: NavController, public params: NavParams, public alrtContrler: AlertController, public modalCtrl: ModalController, public event : Events, public macroService: Macros) {
     
     
     this.paramsData = params.data;
@@ -44,6 +44,7 @@ export class AddMealPage {
     this.restCarbs = params.get("restCarbs");
     this.restFat = params.get ("restFat"); 
 
+    this.meals = this.macroService.getMeals();
   }
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Meal } from '../app/Interface/Meal';
 /*
   Generated class for the Macros provider.
 
@@ -11,6 +11,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Macros {
 
+  meal: Meal;
+
+  meals: Meal[] = [
+
+  ]
 
   
   mealProtein : number;
@@ -27,4 +32,28 @@ export class Macros {
     console.log('Hello Macros Provider');
   }
 
+
+ getMeals() {
+
+
+    this.http.get("http://localhost:8080/meals").map(res => res.json()).subscribe(
+
+      data => {
+
+
+
+        for (let prop in data) {
+          console.log(data[prop])
+          let meal: Meal = data[prop];
+          this.meals[prop] = meal;
+          console.log(this.meals[prop])
+        }
+      }
+
+    )
+    // this.event.subscribe("student:created", (data => {
+//for later 
+    //   this.getStudents();
+    }
+  
 }

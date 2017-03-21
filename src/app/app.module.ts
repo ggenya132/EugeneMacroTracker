@@ -8,7 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AddMealPage } from '../pages/add-meal/add-meal';
 import {SetMacrosPage } from '../pages/set-macros/set-macros';
 import { ChartPage } from '../pages/chart-page/chart-page';
-
+import {Macros } from '../providers/macros';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,6 @@ import { ChartPage } from '../pages/chart-page/chart-page';
     SetMacrosPage,
     ChartPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Macros]
 })
 export class AppModule {}
